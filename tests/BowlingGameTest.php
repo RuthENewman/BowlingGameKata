@@ -7,22 +7,24 @@ include 'src/Game.php';
 
 class BowlingGameTest extends \PHPUnit\Framework\TestCase
 {
+    protected function setUp() {
+        $this->game = new \Game();
+    }
+
     public function testGutterGame()
     {
-        $game = new \Game();
         for($i = 0; $i < 20; $i++) {
-            $game->roll(0);
+            $this->game->roll(0);
         }
-        $this->assertEquals(0, $game->score());
+        $this->assertEquals(0, $this->game->score());
     }
 
     public function testAllOnes()
     {
-        $game = new Game();
         for ($i = 0; $i < 20; $i++) {
-            $game->roll(1);
+            $this->game->roll(1);
         }
-        $this->assertEquals(20, $game->score());
+        $this->assertEquals(20, $this->game->score());
     }
 
 
