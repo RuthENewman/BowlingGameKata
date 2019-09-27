@@ -11,21 +11,33 @@ class BowlingGameTest extends \PHPUnit\Framework\TestCase
         $this->game = new \Game();
     }
 
+    private function rollMany($n, $pins)
+    {
+        for($i = 0; $i < $n; $i++) {
+            $this->game->roll($pins);
+        }
+    }
+
     public function testGutterGame()
     {
-        for($i = 0; $i < 20; $i++) {
-            $this->game->roll(0);
-        }
+        $this->rollMany(20, 0);
         $this->assertEquals(0, $this->game->score());
     }
 
     public function testAllOnes()
     {
-        for ($i = 0; $i < 20; $i++) {
-            $this->game->roll(1);
-        }
+        $this->rollMany(20,1);
         $this->assertEquals(20, $this->game->score());
     }
+
+    // public function testOneSpare()
+    // {
+    //     $this->game->roll(5);
+    //     $this->game->roll(5);
+    //     $this->game->roll(3);
+    //     $this->rollMany(17,0);
+    //     $this->assertEquals(16, $this->game->score());
+    // }
 
 
 }
