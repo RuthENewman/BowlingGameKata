@@ -32,11 +32,25 @@ class BowlingGameTest extends \PHPUnit\Framework\TestCase
 
     public function testOneSpare()
     {
-        $this->game->roll(5);
-        $this->game->roll(5);
+        $this->rollSpare();
         $this->game->roll(3);
         $this->rollMany(17,0);
         $this->assertEquals(16, $this->game->score());
+    }
+
+    public function testOneStrike()
+    {
+        $this->game->roll(10);
+        $this->game->roll(3);
+        $this->game->roll(4);
+        $this->rollMany(16, 0);
+        $this->assertEquals(24, $this->game->score());
+    }
+
+    private function rollSpare()
+    {
+        $this->game->roll(5);
+        $this->game->roll(5);
     }
 
 
