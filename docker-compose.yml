@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: ./php
+    volumes:
+      - /Users/ruthnewman/documents/side-projects/bowling-game-kata/www:/var/www/app/public/
+    working_dir: /var/www/app
+  apache:
+    build:
+      context: ./apache
+    volumes:
+      - /Users/ruthnewman/documents/side-projects/bowling-game-kata/www:/var/www/app/public/
+    ports:
+      - 8383:80
+    links:
+      - php
