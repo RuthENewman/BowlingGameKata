@@ -16,3 +16,7 @@
 docker-compose up // Gets the application up and running
 
 Amend the first php file (index.php) or add additional php files in the same folder and navigate to the revised url to view.
+
+## To run tests in the terminal
+
+./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/BowlingGameTest
