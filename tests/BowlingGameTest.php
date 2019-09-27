@@ -40,11 +40,22 @@ class BowlingGameTest extends \PHPUnit\Framework\TestCase
 
     public function testOneStrike()
     {
-        $this->game->roll(10);
+        $this->rollStrike();
         $this->game->roll(3);
         $this->game->roll(4);
         $this->rollMany(16, 0);
         $this->assertEquals(24, $this->game->score());
+    }
+
+    public function testPerfectGame()
+    {
+        $this->rollMany(12,10);
+        $this->assertEquals(300, $this->game->score());
+    }
+
+    private function rollStrike()
+    {
+        $this->game->roll(10);
     }
 
     private function rollSpare()
